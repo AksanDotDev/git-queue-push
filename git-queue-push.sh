@@ -23,4 +23,4 @@ TARGET=${TARGETRAW:$MARK1:$MARK2-$MARK1-1}
 
 # echo $TARGET
 
-nohup ./git-queue-push-sleeper.sh "$TARGET"  >> queue-push.log &
+nohup ./git-queue-push-sleeper.sh "$TARGET"  >> queue-push.log 2>> queue-push.log &
