@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#!/bin/bash
+
 # Get Origin URL and validate
 TARGETRAW=$(git remote get-url origin)
 if [ -z "$TARGETRAW" ]
@@ -21,14 +23,4 @@ TARGET=${TARGETRAW:$MARK1:$MARK2-$MARK1-1}
 
 # echo $TARGET
 
-while :
-do 
-    #Test connectivity
-    wget -q --spider $TARGET
-
-    if [ $? -eq 0 ]; then
-        echo "go"
-        git push
-        break
-    fi
-done
+nohup ./git-queue-push-sleeper.sh "$TARGET"  >> queue-push.log &
